@@ -114,10 +114,6 @@
           @swipe:left="onSwipeLeft(message)"
           @longpress="onMessageLongPress(message)"
         >
-          <template #avatar v-if="sender">
-            <ChatAvatar :user-id="sender.id" use-public-key @click="onClickAvatar(sender.id)" />
-          </template>
-
           <template #actions v-if="isRealMessage(message)">
             <AChatReactions @click="handleClickReactions(message)" :transaction="message" />
 
@@ -259,16 +255,8 @@
           color="primary"
           :content="numOfNewMessages > 0 ? numOfNewMessages : undefined"
         >
-          <v-btn
-            class="ma-0 grey--text"
-            color="grey lighten-3"
-            icon
-            depressed
-            fab
-            size="small"
-            @click="chatRef.scrollToBottom()"
-          >
-            <v-icon :icon="mdiChevronDown" size="x-large" />
+          <v-btn icon fab size="small" @click="chatRef.scrollToBottom()">
+            <v-icon :icon="mdiChevronDown" size="xx-large" />
           </v-btn>
         </v-badge>
       </template>
@@ -942,6 +930,7 @@ const onKeyPress = (e: KeyboardEvent) => {
 
 <style scoped lang="scss">
 @use 'sass:map';
+@use 'sass:color';
 @use '@/assets/styles/settings/_colors.scss';
 
 .chat-menu {
@@ -968,5 +957,13 @@ const onKeyPress = (e: KeyboardEvent) => {
   .connection-spinner {
     color: map.get(colors.$adm-colors, 'regular');
   }
+}
+
+:deep(.v-badge .v-btn) {
+  z-index: 1;
+  color: map.get(colors.$adm-colors, 'primary');
+  border-radius: 50%;
+  background-color: color.adjust(map.get(colors.$adm-colors, 'primary2'), $alpha: -0.7);
+  box-shadow: none;
 }
 </style>
