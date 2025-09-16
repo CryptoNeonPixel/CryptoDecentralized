@@ -4,16 +4,16 @@
       "displayName": "adm-node",
       "list": [
         {
-          "url": "https://service.adamant.im"
+          "url": "http://5.189.119.42:4000"
         },
         {
-          "url": "https://api.lisk.com"
+          "url": "http://94.130.7.225:4000"
         },
         {
-          "url": "https://mainnet.lisk.com"
+          "url": "http://136.243.250.250:4000"
         },
         {
-          "url": "https://europium.adamant.im"
+          "url": "http://95.216.45.88:4000"
         }
       ],
       "healthCheck": {
